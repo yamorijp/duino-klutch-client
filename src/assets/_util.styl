@@ -1,0 +1,169 @@
+// position
+.fr
+  float right
+
+.fl
+  float left
+
+.unf
+  float none
+
+.parent
+  position relative
+
+.pin-t
+  position absolute
+  top 0
+
+.pin-r
+  position absolute
+  right 0
+
+.pin-b
+  position absolute
+  bottom 0
+
+.pin-l
+  position absolute
+  left 0
+
+.pin-tr
+  position absolute
+  top 0
+  right 0
+
+.pin-br
+  position absolute
+  bottom 0
+  right 0
+
+.pin-bl
+  positon absolute
+  bottom 0
+  left 0
+
+.pin-tl
+  positon absolute
+  top 0
+  left 0
+
+// font-size
+.smaller
+  font-size smaller
+
+.larger
+  font-size lager
+
+.x-small
+  font-size x-small
+
+.small
+  font-size small
+
+.medium
+  font-size medium
+
+.large
+  font-size large
+
+.x-large
+  font-size x-large
+
+// font-weight
+.lighter
+  font-weight lighter
+
+.bolder
+  font-weight bolder
+
+for $n in 300 400 500 700
+  .w{$n}
+    font-weight $n
+
+// text-align
+.tr
+  text-align right
+
+.tl
+  text-align left
+
+.tc
+  text-align center
+
+// text-transform
+.uppercase
+  text-transform uppercase
+
+.lowercase
+  text-transform lowercase
+
+.capitalize
+  text-transform capitalize
+
+// z-index
+for $n in (1 2 3 4 5)
+  .z{$n}
+    z-index $n
+
+// shadow
+for $n in (1 2 3 4 5)
+  $offset-y = $n px
+  $blur = $n * 5px
+  .shadow{$n}
+    box-shadow 0 $offset-y $blur 0 rgba(0,0,0,0.15)
+
+// spacing
+for $n in (0 5px 10px 20px)
+  .mgn{$n}
+    margin $n
+  .mgn{$n}t
+    margin-top $n
+  .mgn{$n}r
+    margin-right $n
+  .mgn{$n}b
+    margin-bottom $n
+  .mgn{$n}l
+    margin-left $n
+  .mgn{$n}x
+    margin 0 $n
+  .mgn{$n}y
+    margin $n 0
+  .pad{$n}
+    padding $n
+  .pad{$n}t
+    padding-top $n
+  .pad{$n}r
+    padding-right $n
+  .pad{$n}b
+    padding-bottom $n
+  .pad{$n}l
+    padding-left $n
+  .pad{$n}x
+    padding 0 $n
+  .pad{$n}y
+    padding $n 0
+
+.quiet
+  opacity .75
+
+// others
+.noevents
+  pointer-events none
+
+.truncate
+  text-overflow ellipsis
+  white-space nowrap
+  overflow hidden
+
+.nowrap
+  white-space nowrap
+
+.clearfix
+  display: block
+
+.clearfix:after
+  content: ''
+  display: block
+  height: 0
+  clear: both
+  visibility: hidden

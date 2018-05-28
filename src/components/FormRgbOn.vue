@@ -1,0 +1,45 @@
+<template>
+  <div class="container">
+    <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+      <el-form-item label="Data" prop="data">
+        <el-input placeholder="hex string..." v-model="form.data" />
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submit">SUBMIT</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+
+<script>
+import client from '../api/client'
+
+export default {
+  name: 'FormRgbOn',
+  props: ['resource'],
+  data () {
+    return {
+      form: {
+        data: ''
+      },
+      rules: {
+        data: [
+          {required: true, trigger: 'blur'}
+        ]
+      }
+    }
+  },
+  methods: {
+    async submit () {
+      this.$refs.form.validate(v => v ? this.send() : false)
+    },
+    async send () {
+      await client(this, this.resource + '/on', {params: this.form})
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
