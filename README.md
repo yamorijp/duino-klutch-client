@@ -16,8 +16,8 @@ To connect demo server,
 
 ## Related Repos
 
-* [duino-klutch](https://github.com/duino-klutch) - arduino (esp8266) api server
-* [duino-klutch-demo-server](https://github.com/duino-klutch-demo-server) - emulate duino-klutch api
+* [duino-klutch](https://github.com/yamorijp/duino-klutch) - arduino (esp8266) api server
+* [duino-klutch-demo-server](https://github.com/yamorijp/duino-klutch-demo-server) - emulate duino-klutch api
 
 
 ## Build Setup
