@@ -2,7 +2,11 @@
   <div class="container">
     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
       <el-form-item label="Data" prop="data">
-        <el-input placeholder="hex string..." v-model="form.data" />
+        <el-input class="color-input" placeholder="hex string..." v-model="form.data">
+          <template slot="append">
+            <el-color-picker v-model="form.data" />
+          </template>
+        </el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submit">SUBMIT</el-button>
@@ -23,9 +27,7 @@ export default {
         data: ''
       },
       rules: {
-        data: [
-          {required: true, trigger: 'blur'}
-        ]
+        data: []
       }
     }
   },
@@ -39,7 +41,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

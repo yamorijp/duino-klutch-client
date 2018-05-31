@@ -2,7 +2,11 @@
   <div>
     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
       <el-form-item label="Data" prop="data">
-        <el-input clearable placeholder="hex string..." v-model="form.data" />
+        <el-input clearable placeholder="hex string..." v-model="form.data">
+          <template slot="append">
+            <picker-four-segments v-model="form.data" />
+          </template>
+        </el-input>
       </el-form-item>
       <el-form-item label="Brightness" prop="brightness">
         <el-input-number v-model="form.brightness" :min="1" :max="7" />
@@ -16,8 +20,10 @@
 
 <script>
 import client from '../api/client'
+import PickerFourSegments from './PickerFourSegments'
 
 export default {
+  components: {PickerFourSegments},
   name: 'FormFourdigitSegments',
   props: ['resource'],
   data () {
@@ -43,7 +49,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

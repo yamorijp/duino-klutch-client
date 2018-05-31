@@ -2,7 +2,11 @@
   <div>
     <el-form ref="form" :model="form" :rules="rules" label-width="100px">
       <el-form-item label="Data" prop="data">
-        <el-input placeholder="hex string..." v-model="form.data" />
+        <el-input placeholder="hex string..." v-model="form.data">
+          <template slot="append">
+            <picker-matrix v-model="form.data" :n="2" />
+          </template>
+        </el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submit">Submit</el-button>
@@ -13,9 +17,11 @@
 
 <script>
 import client from '../api/client'
+import PickerMatrix from './PickerMatrix'
 
 export default {
   name: 'FormMatrixColumns',
+  components: {PickerMatrix},
   props: ['resource'],
   data () {
     return {

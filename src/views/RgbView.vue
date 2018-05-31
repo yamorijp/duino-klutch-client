@@ -10,7 +10,7 @@
     <div>
       <el-tabs :tab-position="tabStyle" v-model="activeTab">
         <el-tab-pane label="On" name="on">
-          <form-rgb-on resource="/led/rgb/on" />
+          <form-rgb-on resource="/led/rgb" />
         </el-tab-pane>
       </el-tabs>
     </div>
