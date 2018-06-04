@@ -14,7 +14,7 @@
         <el-input-number v-model="form.brightness" :min="1" :max="7" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submit">Submit</el-button>
+        <btn-submit type="primary" @click="submit">Submit</btn-submit>
       </el-form-item>
     </el-form>
   </div>

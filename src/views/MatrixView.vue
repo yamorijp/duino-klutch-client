@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="tool clearfix">
-      <el-button class="transparent fr tool-button" @click="next">
+      <btn-submit class="transparent fr tool-button" @click="next">
         Next Message
-      </el-button>
-      <el-button class="transparent fr tool-button" @click="clear">
+      </btn-submit>
+      <btn-submit class="transparent fr tool-button" @click="clear">
         Reset {{name}}
-      </el-button>
+      </btn-submit>
       <h4>{{name}}</h4>
     </div>
 

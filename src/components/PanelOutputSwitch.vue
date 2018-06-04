@@ -28,7 +28,9 @@ export default {
   },
   methods: {
     async toggle () {
-      await client(this, this.resource + '/toggle')
+      if (!this.$store.state.service.requesting) {
+        await client(this, this.resource + '/toggle')
+      }
     }
   }
 }

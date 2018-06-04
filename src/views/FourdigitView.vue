@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="tool clearfix">
-      <el-button class="transparent fr tool-button" @click="clear">
+      <btn-submit class="transparent fr tool-button" @click="clear">
         Reset {{name}}
-      </el-button>
+      </btn-submit>
       <h4>{{name}}</h4>
     </div>
 

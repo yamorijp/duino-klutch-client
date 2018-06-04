@@ -9,9 +9,11 @@ import './assets/app.styl'
 import App from './App'
 import router from './router'
 import store from './store'
+import BtnSubmit from './components/BtnSubmit'
 
 Vue.config.productionTip = false
 Vue.use(Element, {locale, size: 'small'})
+Vue.component('BtnSubmit', BtnSubmit)
 
 /* eslint-disable no-new */
 new Vue({

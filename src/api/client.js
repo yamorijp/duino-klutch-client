@@ -44,6 +44,7 @@ export class ApiFail extends ApiError {
 }
 
 export default async function client (vue, resource, params = {}, discreet = false) {
+  vue.$store.commit('requesting', true)
   try {
     const data = await api(resource, params)
     if (!discreet) {
@@ -63,6 +64,8 @@ export default async function client (vue, resource, params = {}, discreet = fal
       duration: 10000
     })
     return null
+  } finally {
+    vue.$store.commit('requesting', false)
   }
 }
 

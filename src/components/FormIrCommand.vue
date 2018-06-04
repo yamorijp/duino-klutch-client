@@ -7,7 +7,7 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submit">Submit</el-button>
+        <btn-submit type="primary" @click="submit">Submit</btn-submit>
       </el-form-item>
     </el-form>
   </div>

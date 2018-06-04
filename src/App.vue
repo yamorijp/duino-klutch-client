@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loading-indicator />
     <el-container>
       <el-header height="auto">
         <el-row>
@@ -51,10 +52,11 @@
 <script>
 import DotRepeater from './components/DotRepeater'
 import BtnServerConfig from './components/BtnServerConfig'
+import LoadingIndicator from './components/LodingIndicator'
 
 export default {
   name: 'App',
-  components: {BtnServerConfig, DotRepeater},
+  components: {BtnServerConfig, DotRepeater, LoadingIndicator},
   data () {
     return {
       closable: false

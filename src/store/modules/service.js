@@ -24,7 +24,8 @@ const state = {
     // '/sensor/brightness: {
     //   value: 482
     // },...
-  }
+  },
+  requesting: false
 }
 
 const getters = {
@@ -133,6 +134,10 @@ const mutations = {
 
   config (state, config) {
     Object.assign(state.config, config)
+  },
+
+  requesting (state, b) {
+    state.requesting = b
   }
 }
 

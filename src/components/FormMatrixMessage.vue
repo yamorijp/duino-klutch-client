@@ -11,7 +11,7 @@
         <el-switch v-model="form.instant" active-value="1" inactive-value="0" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submit">Submit</el-button>
+        <btn-submit type="primary" @click="submit">Submit</btn-submit>
       </el-form-item>
     </el-form>
   </div>
