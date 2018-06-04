@@ -1,12 +1,14 @@
 <template>
-  <div class="panel-inner">
-    <div class="panel-content">
-      <animated-number class="temperature" :value="temperature" />
-      <small>°C</small><animated-number class="humidity" :value="humidity" />
-      <small>%</small>
+  <el-tooltip :open-delay="1000" :content="tipContent">
+    <div class="panel-inner">
+      <div class="panel-content">
+        <animated-number class="temperature" :value="temperature" />
+        <small>°C</small><animated-number class="humidity" :value="humidity" />
+        <small>%</small>
+      </div>
+      <div class="panel-title">{{name}}</div>
     </div>
-    <div class="panel-title">{{name}}</div>
-  </div>
+  </el-tooltip>
 </template>
 
 <script>
@@ -24,6 +26,14 @@ export default {
     humidity () {
       const data = this.$store.state.service.resources[this.resource]
       return data && data.humidity ? data.humidity : null
+    },
+    tipContent () {
+      const data = this.$store.state.service.resources[this.resource]
+      if (data && data.temperature && data.humidity) {
+        return `T:${data.temperature}, H:${data.humidity}`
+      } else {
+        return 'Unavailable'
+      }
     }
   }
 }

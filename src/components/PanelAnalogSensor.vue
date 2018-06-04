@@ -1,8 +1,10 @@
 <template>
-  <div class="panel-inner">
-    <div class="panel-content"><i class="material-icons">{{ iconify }}</i></div>
-    <div class="panel-title">{{name}}</div>
-  </div>
+  <el-tooltip :open-delay="1000" :content="tipContent">
+    <div class="panel-inner">
+      <div class="panel-content"><i class="material-icons">{{ iconify }}</i></div>
+      <div class="panel-title">{{name}}</div>
+    </div>
+  </el-tooltip>
 </template>
 
 <script>
@@ -25,6 +27,14 @@ export default {
         if (data.value > 0) return icons.high
       }
       return icons.nan
+    },
+    tipContent () {
+      const data = this.$store.state.service.resources[this.resource]
+      if (data && data.value) {
+        return 'V:' + data.value
+      } else {
+        return 'Unavailable'
+      }
     }
   }
 }
