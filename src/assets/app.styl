@@ -79,6 +79,9 @@ a
 .el-button
   font-size smaller
 
+.el-tooltip__popper
+  font-size smaller
+
 .el-footer
   opacity .3
   text-align right
@@ -102,9 +105,17 @@ button
 
 .el-popover
   min-width 280px
-  background-color #f0f0f6
-  .el-form-item__label
-    color $primary-dark
+  background-color $popover-bg
+  border-color $popover-bg
+  color $popover-fg
+
+.el-popper[x-placement^=bottom] .popper__arrow
+.el-popper[x-placement^=bottom] .popper__arrow:after
+  border-bottom-color $popover-bg
+
+.el-popper[x-placement^=top] .popper__arrow
+.el-popper[x-placement^=top] .popper__arrow:after
+  border-top-color $popover-bg
 
 .el-tabs__item
   color $primary
@@ -127,6 +138,20 @@ button
 
 .color-input .el-input-group__append
   padding 0 10px
+
+.el-color-dropdown__btn.el-button--default
+  color #fff
+  background-color #409eff
+  border-color #409eff
+  &:hover
+  &:focus
+    background-color #66b1ff
+    border-color #66b1ff
+    color #fff
+  &:active
+    background-color #3a8ee6
+    border-color #3a8ee6
+    color #fff
 
 .panels
   padding 0
@@ -205,11 +230,3 @@ button
     width 100%
   .el-popover
     right initial
-
-@media (max-width $media-sm)
-  .el-popover
-    left 8px
-    right 8px
-  .tool
-    padding-left 0
-    padding-right 0

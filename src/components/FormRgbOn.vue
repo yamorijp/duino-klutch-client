@@ -4,7 +4,7 @@
       <el-form-item label="Data" prop="data">
         <el-input class="color-input" placeholder="hex string..." v-model="form.data">
           <template slot="append">
-            <el-color-picker v-model="form.data" />
+            <el-color-picker v-model="form.data" popper-class="el-popover el-popper" />
           </template>
         </el-input>
       </el-form-item>

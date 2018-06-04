@@ -33,7 +33,7 @@
       </el-header>
 
       <el-main>
-        <transition name="el-zoom-in-bottom" mode="out-in" :duration="{enter:500,leave:0}">
+        <transition name="el-zoom-in-bottom" mode="out-in" :duration="{enter:200,leave:0}">
           <router-view v-if="status === 'ok'" class="view" />
         </transition>
       </el-main>
