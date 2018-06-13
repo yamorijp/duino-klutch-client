@@ -70,6 +70,7 @@ a
 .el-textarea__inner
 .el-button
 .el-popover
+.el-select-dropdown
 .el-message
   border-radius 1px
 
@@ -116,6 +117,21 @@ button
 .el-popper[x-placement^=top] .popper__arrow
 .el-popper[x-placement^=top] .popper__arrow:after
   border-top-color $popover-bg
+
+.el-select-dropdown.el-popper[x-placement^=bottom] .popper__arrow
+.el-select-dropdown.el-popper[x-placement^=bottom] .popper__arrow:after
+    border-bottom-color #fff
+
+.el-select-dropdown.el-popper[x-placement^=top] .popper__arrow
+.el-select-dropdown.el-popper[x-placement^=top] .popper__arrow:after
+    border-top-color #fff
+
+.el-select-dropdown__header
+  font-size smaller
+  font-weight bolder
+  text-align center
+  padding 5px 20px
+  color $quiet
 
 .el-tabs__item
   color $primary

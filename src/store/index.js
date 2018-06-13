@@ -27,6 +27,12 @@ store.subscribe(async (mutation, state) => {
     } catch (e) {
       console.error(e)
     }
+  } else if (mutation.type === 'servers') {
+    try {
+      ls.set('duino-k.service.servers', state.service.servers)
+    } catch (e) {
+      console.error(e)
+    }
   }
 })
 

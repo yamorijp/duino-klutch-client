@@ -2,6 +2,21 @@ import Vue from 'vue'
 import ls from 'local-storage'
 import {api} from '../../api/client'
 
+const defaultServers = [
+  {
+    label: 'My Room #1',
+    host: 'duino-k.local',
+    httpPort: '80',
+    wsPort: '81'
+  },
+  {
+    label: 'Demo Server #1',
+    host: 'duino-k.herokuapp.com',
+    httpPort: '80',
+    wsPort: '80'
+  }
+]
+
 let socket = null
 
 const state = {
@@ -12,6 +27,14 @@ const state = {
     httpPort: '80',
     wsPort: '81'
   },
+  servers: [
+    // {
+    //   host: 'duino-k.local',
+    //   label: 'My Room #1',
+    //   httpPort: '80',
+    //   wsPort: '81'
+    // },
+  ],
   handlers: [
     // {
     //   group: 'sensor,
@@ -43,6 +66,10 @@ const getters = {
   },
   irHandlers (state, getters) {
     return getters.handlers('ir')
+  },
+  server: (state) => (key) => {
+    const s = state.servers.find(item => item.label === key)
+    return s || {label: key, host: '', httpPort: '80', wsPort: '81'}
   }
 }
 
@@ -56,9 +83,13 @@ const actions = {
   initialize (context) {
     const config = ls.get('duino-k.service.config') || {}
     context.commit('config', config)
+
+    const servers = ls.get('duino-k.service.servers') || defaultServers
+    context.commit('servers', servers)
   },
 
   saveConfig (context, config) {
+    context.dispatch('addServer', config)
     context.commit('config', config)
   },
 
@@ -106,10 +137,27 @@ const actions = {
         resolve()
       }
     })
+  },
+
+  addServer (context, server) {
+    const servers = context.state.servers
+      .filter(item => item.label !== server.label)
+      .concat({...server})
+    context.commit('servers', servers)
+  },
+
+  deleteServer (context, label) {
+    const servers = context.state.servers
+      .filter(item => item.label !== label)
+    context.commit('servers', servers)
   }
 }
 
 const mutations = {
+
+  servers (state, servers) {
+    state.servers = servers
+  },
 
   status (state, status) {
     state.status = status

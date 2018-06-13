@@ -9,7 +9,7 @@
               <i class="material-icons">close</i>
             </el-button>
 
-            <btn-server-config />
+            <btn-server-chooser />
 
             <router-link to="/" class="fl mgn5l">
               <small>{{host}}</small><br>
@@ -51,12 +51,12 @@
 
 <script>
 import DotRepeater from './components/DotRepeater'
-import BtnServerConfig from './components/BtnServerConfig'
+import BtnServerChooser from './components/BtnServerChooser'
 import LoadingIndicator from './components/LodingIndicator'
 
 export default {
   name: 'App',
-  components: {BtnServerConfig, DotRepeater, LoadingIndicator},
+  components: {BtnServerChooser, DotRepeater, LoadingIndicator},
   data () {
     return {
       closable: false

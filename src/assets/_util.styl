@@ -90,6 +90,16 @@ for $n in 300 400 500 700
 .tc
   text-align center
 
+// text-color
+.text-accent
+  color $accent
+
+.text-danger
+  color $danger
+
+.text-quiet
+  color $quiet
+
 // text-transform
 .uppercase
   text-transform uppercase
@@ -125,9 +135,11 @@ for $n in (0 5px 10px 20px)
   .mgn{$n}l
     margin-left $n
   .mgn{$n}x
-    margin 0 $n
+    margin-left $n
+    margin-right $n
   .mgn{$n}y
-    margin $n 0
+    margin-top $n
+    margin-bottom $n
   .pad{$n}
     padding $n
   .pad{$n}t
@@ -139,9 +151,11 @@ for $n in (0 5px 10px 20px)
   .pad{$n}l
     padding-left $n
   .pad{$n}x
-    padding 0 $n
+    padding-left $n
+    padding-right $n
   .pad{$n}y
-    padding $n 0
+    padding-top $n
+    padding-bottom $n
 
 .quiet
   opacity .75
