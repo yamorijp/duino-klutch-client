@@ -23,6 +23,7 @@ store.subscribe(async (mutation, state) => {
     try {
       ls.set('duino-k.service.config', state.service.config)
       await store.dispatch('disconnect')
+      await store.dispatch('updateCover')
       await store.dispatch('connect')
     } catch (e) {
       console.error(e)

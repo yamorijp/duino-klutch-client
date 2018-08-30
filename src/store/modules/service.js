@@ -7,13 +7,15 @@ const defaultServers = [
     label: 'My Room #1',
     host: 'duino-k.local',
     httpPort: '80',
-    wsPort: '81'
+    wsPort: '81',
+    cover: ''
   },
   {
     label: 'Demo Server #1',
     host: 'duino-k.herokuapp.com',
     httpPort: '80',
-    wsPort: '80'
+    wsPort: '80',
+    cover: ''
   }
 ]
 
@@ -25,7 +27,8 @@ const state = {
     host: 'duino-k.local',
     label: 'My Room #1',
     httpPort: '80',
-    wsPort: '81'
+    wsPort: '81',
+    cover: ''
   },
   servers: [
     // {
@@ -86,6 +89,14 @@ const actions = {
 
     const servers = ls.get('duino-k.service.servers') || defaultServers
     context.commit('servers', servers)
+  },
+
+  updateCover (context) {
+    if (context.state.config.cover) {
+      document.body.style.backgroundImage = `url(${context.state.config.cover})`
+    } else {
+      document.body.style.backgroundImage = null
+    }
   },
 
   saveConfig (context, config) {

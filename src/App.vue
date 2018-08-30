@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <loading-indicator />
-    <el-container>
-      <el-header height="auto">
+    <div class="container">
+      <header height="auto">
         <el-row>
           <h2>
             <el-button v-if="closable" class="transparent fr" @click="close">
@@ -30,22 +30,22 @@
             Please stand by.
           </p>
         </el-row>
-      </el-header>
+      </header>
 
-      <el-main>
+      <section class="main">
         <transition name="el-zoom-in-bottom" mode="out-in" :duration="{enter:200,leave:0}">
           <router-view v-if="status === 'ok'" class="view" />
         </transition>
-      </el-main>
+      </section>
 
-      <el-footer>
+      <footer>
         <a href="https://github.com/yamorijp/duino-klutch-client">
           <img class="github" src="/static/img/github-32x32.png" width="16" height="16" alt="github" />
           <span style="color: #fff">duino</span>
           <span style="color: #bbb">klutch</span>
         </a>
-      </el-footer>
-    </el-container>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -97,8 +97,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-#app
-  margin-top 20px
 .view
   opacity 1.0
   transition-property all

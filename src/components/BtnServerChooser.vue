@@ -2,7 +2,7 @@
   <el-popover placement="bottom-start" v-on:show="reset" v-model="popover" transition="el-zoom-in-top">
     <h4 class="mgn0t tc">Server Configuration</h4>
 
-    <el-form ref="form" :model="form" :rules="rules" label-width="100px">
+    <el-form ref="form" :model="form" :rules="rules" label-width="90px">
       <el-form-item label="Label" prop="label">
         <el-select
           v-model="form.label"
@@ -25,6 +25,9 @@
       </el-form-item>
       <el-form-item label="WS Port" prop="wsPort">
         <el-input-number v-model="form.wsPort" :min="0" :max="65535"/>
+      </el-form-item>
+      <el-form-item label="Cover" prop="cover">
+        <el-input clearable placeholder="http://unsplash.com/photo..." type="url" v-model="form.cover" />
       </el-form-item>
     </el-form>
 
@@ -52,7 +55,8 @@ export default {
         host: '',
         label: '',
         httpPort: 80,
-        wsPort: 81
+        wsPort: 81,
+        cover: ''
       },
       rules: {
         host: [
@@ -66,6 +70,9 @@ export default {
         ],
         wsPort: [
           {required: true}
+        ],
+        cover: [
+          {type: 'url'}
         ]
       },
       popover: false
@@ -73,7 +80,7 @@ export default {
   },
   computed: {
     modifyed () {
-      const names = ['host', 'label', 'httpPort', 'wsPort']
+      const names = ['host', 'label', 'httpPort', 'wsPort', 'cover']
       return !!names.find(name => this.$store.state.service.config[name] !== this.form[name])
     },
     servers () {
@@ -101,6 +108,7 @@ export default {
       this.form.host = server.host
       this.form.httpPort = server.httpPort
       this.form.wsPort = server.wsPort
+      this.form.cover = server.cover
     },
     demo () {
       this.form.host = 'duino-k.herokuapp.com'
