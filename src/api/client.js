@@ -2,8 +2,9 @@ import axios from 'axios'
 
 let baseUrl = ''
 
-export function setHost (host, port = 80) {
-  baseUrl = 'http://' + host + ':' + port
+export function setHost ({host, httpPort, secure}) {
+  const proto = secure ? 'https' : 'http'
+  baseUrl = proto + '://' + host + ':' + httpPort
 }
 
 function snakeToTitle (str) {

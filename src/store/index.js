@@ -19,7 +19,7 @@ const store = new Vuex.Store({
 
 store.subscribe(async (mutation, state) => {
   if (mutation.type === 'config') {
-    setHost(state.service.config.host, state.service.config.httpPort)
+    setHost(state.service.config)
     try {
       ls.set('duino-k.service.config', state.service.config)
       await store.dispatch('disconnect')

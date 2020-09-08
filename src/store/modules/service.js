@@ -8,13 +8,15 @@ const defaultServers = [
     host: 'duino-k.local',
     httpPort: '80',
     wsPort: '81',
+    secure: false,
     cover: ''
   },
   {
     label: 'Demo Server #1',
     host: 'duino-k.herokuapp.com',
-    httpPort: '80',
-    wsPort: '80',
+    httpPort: '443',
+    wsPort: '443',
+    secure: true,
     cover: ''
   }
 ]
@@ -28,6 +30,7 @@ const state = {
     label: 'My Room #1',
     httpPort: '80',
     wsPort: '81',
+    secure: false,
     cover: ''
   },
   servers: [
@@ -72,7 +75,7 @@ const getters = {
   },
   server: (state) => (key) => {
     const s = state.servers.find(item => item.label === key)
-    return s || {label: key, host: '', httpPort: '80', wsPort: '81'}
+    return s || {label: key, host: '', httpPort: '80', wsPort: '81', secure: false}
   }
 }
 
@@ -117,7 +120,8 @@ const actions = {
     }
 
     // connect to web-socket
-    socket = new WebSocket('ws://' + context.state.config.host + ':' + context.state.config.wsPort)
+    const proto = context.state.config.secure ? 'wss' : 'ws'
+    socket = new WebSocket(proto + '://' + context.state.config.host + ':' + context.state.config.wsPort)
     socket.onmessage = event => {
       const data = JSON.parse(event.data)
       if (data.event === 'update' || data.event === 'init') {

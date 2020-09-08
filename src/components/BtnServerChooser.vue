@@ -26,6 +26,9 @@
       <el-form-item label="WS Port" prop="wsPort">
         <el-input-number v-model="form.wsPort" :min="0" :max="65535"/>
       </el-form-item>
+      <el-form-item label="Secure" prop="secure">
+        <el-switch v-model="form.secure"/> <span class="smaller quiet">Use secure https/wss protocol</span>
+      </el-form-item>
       <el-form-item label="Cover" prop="cover">
         <el-input clearable placeholder="http://unsplash.com/photo..." type="url" v-model="form.cover" />
       </el-form-item>
@@ -56,6 +59,7 @@ export default {
         label: '',
         httpPort: 80,
         wsPort: 81,
+        secure: false,
         cover: ''
       },
       rules: {
@@ -80,7 +84,7 @@ export default {
   },
   computed: {
     modifyed () {
-      const names = ['host', 'label', 'httpPort', 'wsPort', 'cover']
+      const names = ['host', 'label', 'httpPort', 'wsPort', 'secure', 'cover']
       return !!names.find(name => this.$store.state.service.config[name] !== this.form[name])
     },
     servers () {
@@ -108,13 +112,15 @@ export default {
       this.form.host = server.host
       this.form.httpPort = server.httpPort
       this.form.wsPort = server.wsPort
+      this.form.secure = server.secure || false
       this.form.cover = server.cover
     },
     demo () {
       this.form.host = 'duino-k.herokuapp.com'
       this.form.label = 'Demo Server #1'
-      this.form.httpPort = 80
-      this.form.wsPort = 80
+      this.form.httpPort = '443'
+      this.form.wsPort = '443'
+      this.form.secure = true
     }
   }
 }
