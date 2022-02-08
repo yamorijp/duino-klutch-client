@@ -15,7 +15,7 @@
     "build_nohash": "node build/build-nohash.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.2",
     "element-ui": "^2.3.9",
     "gsap": "^2.0.1",
     "local-storage": "^1.4.2",
