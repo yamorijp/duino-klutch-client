@@ -12,6 +12,13 @@ const defaultServers = [
     cover: ''
   },
   {
+    label: 'Bedroom #1',
+    host: 'duino-h.local',
+    wsPort: '81',
+    secure: false,
+    cover: ''
+  },
+  {
     label: 'Demo Server #1',
     host: 'duino-k.herokuapp.com',
     httpPort: '443',
@@ -72,6 +79,9 @@ const getters = {
   },
   irHandlers (state, getters) {
     return getters.handlers('ir')
+  },
+  deviceHandlers (state, getters) {
+    return getters.handlers('device')
   },
   server: (state) => (key) => {
     const s = state.servers.find(item => item.label === key)

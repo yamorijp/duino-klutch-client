@@ -6,6 +6,7 @@ import RgbView from '../views/RgbView'
 import FourdigitView from '../views/FourdigitView'
 import IrView from '../views/IrView'
 import IrxView from '../views/IrxView'
+import ClockView from '../views/Clock'
 
 Vue.use(Router)
 
@@ -45,6 +46,12 @@ export default new Router({
       path: '/irx',
       name: 'irx',
       component: IrxView,
+      props: (route) => ({resource: route.query.resource, name: route.query.name})
+    },
+    {
+      path: '/clock',
+      name: 'clock',
+      component: ClockView,
       props: (route) => ({resource: route.query.resource, name: route.query.name})
     }
   ]

@@ -44,6 +44,7 @@
           <span style="color: #fff">duino</span>
           <span style="color: #bbb">klutch</span>
         </a>
+        <a :href="apidoc">api</a>
       </footer>
     </div>
   </div>
@@ -83,6 +84,12 @@ export default {
     },
     status () {
       return this.$store.state.service.status
+    },
+    apidoc () {
+      const server = this.$store.state.service.config
+      const proto = server.secure ? 'https' : 'http'
+      const port = server.httpPort === 80 ? '' : `:${server.httpPort}`
+      return `${proto}://${server.host}${port}/docs`
     }
   },
   watch: {
@@ -110,4 +117,8 @@ export default {
   opacity 0.1
 .v-enter-active
   opacity 1.0
+footer a:nth-child(2)
+  padding-left 5px
+  margin-left 5px
+  border-left 1px solid #999
 </style>

@@ -11,14 +11,28 @@
 import moment from 'moment'
 
 const icons = {
-  nan: 'hourglass_empty',
-  on: 'link',
-  off: 'link_off'
+  _: {
+    nan: 'hourglass_empty',
+    on: 'toggle_on',
+    off: 'toggle_off'
+  },
+  motion: {
+    nan: 'hourglass_empty',
+    on: 'link',
+    off: 'link_off'
+  },
+  rain: {
+
+  }
 }
 
 export default {
-  name: 'PanelStateSwitch',
-  props: ['resource', 'name'],
+  name: 'PanelInputSwitch',
+  props: {
+    'resource': {},
+    'name': {},
+    'style_': {}
+  },
   data () {
     return {
       tipContent: 'Unavailable', // 現在日時を使用するのでcomputedで作成しない
@@ -28,12 +42,15 @@ export default {
     }
   },
   computed: {
+    icon () {
+      return icons[this.style_] || icons['_']
+    },
     iconify () {
       const data = this.resourceData
       if (data) {
-        return data.state ? icons.on : icons.off
+        return data.state ? this.icon.on : this.icon.off
       }
-      return icons.nan
+      return this.icon.nan
     },
     resourceData () {
       const data = this.$store.state.service.resources[this.resource]
