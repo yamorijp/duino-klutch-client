@@ -19,7 +19,7 @@
     "element-ui": "^2.3.9",
     "gsap": "^2.0.1",
     "local-storage": "^1.4.2",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "vue": "^2.5.2",
     "vue-media": "^1.1.1",
     "vue-router": "^3.0.1",
